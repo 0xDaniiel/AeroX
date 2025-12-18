@@ -20,7 +20,7 @@ const getTimeLeft = () => {
   }
 
   const diff = endTime - Date.now();
-  
+
   if (diff <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   }
@@ -55,7 +55,7 @@ export const Countdown = () => {
   return (
     <div className="bg-card border border-border rounded-lg p-4">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-muted-foreground">Presale ends in</span>
+        <span className="text-sm text-muted-foreground">Ends in</span>
         <div className="flex items-center gap-2">
           {timeBlocks.map((block, i) => (
             <div key={block.label} className="flex items-center">
@@ -63,9 +63,13 @@ export const Countdown = () => {
                 <span className="text-sm font-semibold text-foreground tabular-nums">
                   {String(block.value).padStart(2, "0")}
                 </span>
-                <span className="text-xs text-muted-foreground ml-1">{block.label[0].toLowerCase()}</span>
+                <span className="text-xs text-muted-foreground ml-1">
+                  {block.label[0].toLowerCase()}
+                </span>
               </div>
-              {i < timeBlocks.length - 1 && <span className="text-muted-foreground mx-1">:</span>}
+              {i < timeBlocks.length - 1 && (
+                <span className="text-muted-foreground mx-1">:</span>
+              )}
             </div>
           ))}
         </div>
